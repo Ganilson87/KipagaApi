@@ -1,0 +1,263 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}| Usuarios{% endblock  %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Cadastro de Usuario </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class=" btn btn-gradient-warning" href="{% url 'usuario' %}">
+            <i class="mdi mdi-account-multiple-plus"></i>
+
+            Voltar</a></li>
+            <li class="lg"><a class=" btn btn-gradient-primary" style="margin-left:20px;" href="/usuarios/Deposito/{{object.id}}">
+              <i class="mdi mdi-account-multiple-plus"></i>
+  
+              Depositos</a></li>
+        </ol>
+      </nav>
+    </div>
+    <div class="col-12 grid-margin stretch-card">
+
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">{{object.first_name}} {{object.last_name}}</h4>
+              <p style="color:gainsboro">
+                <i class="mdi mdi-gps"></i>
+
+                {{object.provincia}}</p>
+                <div style="border-radius: 10px; width: 500px; height: 300px; background-size: cover; background-image: url('/{{object.foto}}');  ">
+                </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body" style="height: 400px;">
+              <h4 class="card-title">Cartão Kipaga</h4>
+            
+                <div class="cart" style="margin-top: 50px;">
+                    <div class="logo"><img
+                        src="/static/images/{{object.bi}}.png"
+                        alt="{{object.bi}}"></div>
+                <div class="chip"><img src="{% static 'assets/images/logo.png' %}"
+                        alt="chip"></div>
+                <div class="number">{{object.first_name}} {{object.last_name}}</div>
+                <br/>
+                <div class="name"><h4>{{object.idKipaga}}</h4></div>
+                <br>
+                <div class="to">{{object.createdAt}}</div>
+                <div class="ring"></div>
+        </div>              
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="row">
+
+ 
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <form class="form-sample" method="post">
+                {% csrf_token %}
+                <div class="d-flex align-items-center me-4 text-muted font-weight-light">
+                    <i class="mdi mdi-alert-circle-outline icon-sm text-primary me-2"></i>
+                    <span>Informações prévias sobre <b>{{object.first_name}} {{object.last_name}}</b>!</span>
+                  </div>
+                  <br/>              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Primeiro nome</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text" name="first_name" value="{{object.first_name}}" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Sobrenome</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text" name="last_name" value="{{object.last_name}}" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label" >Email</label>
+                      <div class="col-sm-9">
+                        <input disabled type="email" name="email" value="{{object.email}}"class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Telefone</label>
+                      <div class="col-sm-9">
+                        <input disabled type="text" required name="telefone" value="{{object.Telefone}}" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">BI</label>
+                      <div class="col-sm-9">
+                        <input disabled type="text" required name="bi" value="{{object.bi}}" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3  col-form-label" >Genero</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" required name="gender">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Data de nascimento</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" required name="data_nasc" value="{{object.data}}" disabled type="date" placeholder="dd/mm/yyyy" />
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Categoria</label>
+                    <div class="col-sm-9">
+                      <select class="form-control disabled" required name="nivel">
+                        <option value="App">Normal</option>
+         
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Saldo De Conta</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" required name="data_nasc" value="{{object.saldo}} AOA" disabled type="integer"  />
+                    </div>
+                  </div>
+                </div>
+                {% comment %} <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Membership</label>
+                    <div class="col-sm-4">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input disabled type="radio" class="form-check-input" required name="membershipRadios" id="membershipRadios1" value="" checked> Comercial </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input disabled type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2"> Normal </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> {% endcomment %}
+              </div>
+              <p class="card-description"> Localização </p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Endereço 1</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text" name="endereco1"  value="{{object.endereco1}}" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Endereço 2</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text"  value="{{object.endereco2}}" name="endereco2" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">provincia</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="provincia">
+                        <option value="Huil">Huila</option>
+                        <option value="Huil">Huila</option>
+                        <option value="Huil">Huila</option>
+                        <option value="Huil">Huila</option>
+                 
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+     
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Movimentos de Conta</h4>
+            <div class="table-responsive">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th> De: </th>
+                    <th> Para </th>
+                    <th> Valor </th>
+                    <th> Data </th>
+                    <th> Tracking ID </th>
+                  </tr>
+                </thead>
+                <tbody>
+                 {% for transferencia in transferencias  %}
+                 <tr>
+                  <td>
+                    <img src="{% static 'assets/images/user.svg' %}" class="me-2" alt="image"> {{transferencia.sender.first_name}}
+                  </td>
+                  <td> {{transferencia.receptor.first_name}} </td>
+                  <td>
+                    <label class="badge badge-gradient-success">{{transferencia.valor}}  AOA</label>
+                  </td>
+                  <td> 10 de Janeiro</td>
+                  <td> 09090 </td>
+                </tr>
+             {% endfor %}
+                
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock  %}

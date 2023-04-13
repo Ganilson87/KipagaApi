@@ -1,0 +1,113 @@
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color:rgba(136, 0, 255, 0.686);
+ }
+h3{
+    color: white;
+ 
+}
+.blurefect{
+    filter: blur(30px);
+}
+.cardWarnig{
+    width: 300px;
+    background-color: rgba(223, 223, 223, 0.749);
+    padding: 10px;
+    border-radius: 7px;
+    font-weight: bold;
+margin-left: 615px;    
+align-items: center;
+text-align: center;
+color: rgb(61, 61, 61);
+
+justify-content: center;
+position: absolute;
+margin-top: 200px;    
+    z-index: 100;
+transition: 2s;
+}
+.cardWarnig:hover{
+    width: 300px;
+    background-color: rgba(226, 226, 226, 0.178);
+    padding: 10px;
+    border-radius: 7px;
+    font-weight: bold;
+margin-left: 615px;    
+align-items: center;
+text-align: center;
+transition: 2s;
+justify-content: center;
+position: absolute;
+margin-top: 200px;    
+    z-index: 100;
+    
+}
+ .container{
+    width: 70%;
+     margin-left: 15%;
+     border: 1px solid rgb(246, 246, 246);
+     border-radius: 10px;
+     margin-top: 10px;
+     height: 100%;
+    background: rgba(179, 172, 172, 0.287);
+    z-index: 1;
+  }
+ .cardEnvite{
+    margin-left: 40%;
+    margin-top: 20%;
+
+    align-items: center;
+    justify-content: center;
+  }
+a{
+    text-decoration: none;
+    color:     rgb(136, 0, 255);
+ 
+}
+ #img{
+    width: 200px;
+    
+ }
+ @media (max-width: 844px) {
+    .cardEnvite{
+        margin-left: 20%;
+        margin-top: 20%;
+    
+        align-items: center;
+        justify-content: center;
+      }
+      .cardWarnig{
+        width: 300px;
+        background-color: rgba(255, 128, 0, 0.331);
+        padding: 10px;
+        border-radius: 7px;
+        font-weight: bold;
+        z-index: 100;
+        color: rgb(41, 41, 41);
+        margin-top: 140px;    
+
+        margin-left: 13px;
+    }
+    .cardWarnig:hover{
+        width: 300px;
+        background-color: rgba(255, 128, 0, 0.12);
+        padding: 10px;
+        border-radius: 7px;
+        font-weight: bold;
+        z-index: 100;
+        margin-top: 140px;    
+
+        margin-left: 13px;
+    } 
+    .container{
+        width: 90%;
+         margin-left: 5%;
+         border: 1px solid rgb(246, 246, 246);
+         border-radius: 10px;
+         margin-top: 130px;
+         height: 100%;
+         
+        background: rgba(179, 172, 172, 0.287);
+        z-index: 1;
+      }
+ }  

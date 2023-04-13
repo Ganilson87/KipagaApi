@@ -1,0 +1,218 @@
+{% extends 'index.html' %}
+
+{% block title %}| Usuarios{% endblock  %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Cadastro de Usuario </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class=" btn btn-gradient-warning" href="{% url 'usuario' %}">
+            <i class="mdi mdi-account-multiple-plus"></i>
+
+            Voltar</a></li>
+       
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+ 
+ 
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <form class="form-sample" method="post" id="form-sample" enctype="application/x-www-form-urlencoded">
+                {% csrf_token %}
+                <div class="d-flex align-items-center me-4 text-muted font-weight-light">
+                    <i class="mdi mdi-alert-circle-outline icon-sm text-primary me-2"></i>
+                    <span>Cadastre aqui os usuarios, após isso o sistema enviará as credencias ao ao email!</span>
+                  </div>
+                  <br/>              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Primeiro nome</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="first_name" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Sobrenome</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="last_name" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Email</label>
+                      <div class="col-sm-9">
+                        <input type="email" name="email" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Telefone</label>
+                      <div class="col-sm-9">
+                        <input type="text" required name="telefone" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">BI</label>
+                      <div class="col-sm-9">
+                        <input type="text" required name="bi" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+              
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3  col-form-label" >Genero</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" required name="gender">
+                        <option value="Masculino">Masculino</option>
+                        <option value="Feminino">Feminino</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Data de nascimento</label>
+                    <div class="col-sm-9">
+                      <input class="form-control" required name="data_nasc" type="date" placeholder="dd/mm/yyyy" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Categoria</label>
+                    <div class="col-sm-9">
+                      <select class="form-control disabled" required name="nivel">
+                        <option value="App">Normal</option>
+         
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                {% comment %} <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Membership</label>
+                    <div class="col-sm-4">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" required name="membershipRadios" id="membershipRadios1" value="" checked> Comercial </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2"> Normal </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> {% endcomment %}
+              </div>
+              <p class="card-description"> Localização </p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Endereço 1</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="endereco1" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Endereço 2</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="endereco2" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+          
+              </div>
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">provincia</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="provincia">
+                        <option value="Angola">Angola</option>
+                 
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+<div class="ficheiro" style="
+">
+  <div class=”preview”>
+    <img id="file-ip-1-preview" style="
+      
+      margin-top: 10px;
+      width: 100%;
+      
+      " >
+  </div>
+  <label for="file"  class=" btn btn-info" style="
+  margin-top: 80px; margin-left: 200px; display: inline-block;">             
+    <i class="mdi mdi-camera"></i>
+
+
+    Carregar foto</label>
+  <input id="file" type="file" name="image" style="display: none;" accept="image/*" onchange="showPreview(event);">
+
+</div>               
+
+                  </div>
+                </div>
+              </div>
+               
+              <button class=" btn btn-gradient-primary" type="submit">
+                <i class="mdi mdi-save"> </i>
+                    Salvar
+
+              </button>
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    $('#form-sample').on('submit', function(event){
+      swal("Hello world!");
+
+      event.preventDefault();
+      console.log("form submitted!")  // sanity check
+  });
+     function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+  </script>
+
+{% endblock  %}

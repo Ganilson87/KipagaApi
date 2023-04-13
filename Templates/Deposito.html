@@ -1,0 +1,109 @@
+{% extends 'index.html' %}
+{% load static %}
+
+{% block title %}| Depositos{% endblock  %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Depositar na conta Kipaga </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class=" btn btn-gradient-warning" href="{% url 'usuario' %}">
+            <i class="mdi mdi-account-multiple-plus"></i>
+
+            Voltar</a></li>
+       
+        </ol>
+      </nav>
+    </div>
+   
+    <div class="row">
+
+ 
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <form class="form-sample" method="post">
+                {% csrf_token %}
+                <div class="d-flex align-items-center me-4 text-muted font-weight-light">
+                    <i class="mdi mdi-alert-circle-outline icon-sm text-warning me-2"></i>
+                    <span>Esse Usuario não tem a conta activada, deposite o montante requisitado para a sua activação <b>{{object.first_name}} {{object.last_name}}</b>!</span>
+                  </div>
+                  <br/>             
+           <div class="row">
+            <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Primeiro nome</label>
+                  <div class="col-sm-9">
+                    <input disabled type="text" name="first_name" value="{{object.first_name}}" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group row">
+                  <label class="col-sm-3 col-form-label">Sobrenome</label>
+                  <div class="col-sm-9">
+                    <input disabled type="text" name="last_name" value="{{object.last_name}}" class="form-control" />
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" >Email</label>
+                    <div class="col-sm-9">
+                      <input disabled type="email" name="email" value="{{object.email}}"class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Telefone</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text" required name="telefone" value="{{object.Telefone}}" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+              <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">BI</label>
+                    <div class="col-sm-9">
+                      <input disabled type="text" required name="bi" value="{{object.bi}}" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                
+           </div>
+             
+              
+     
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+    <br/>
+    <div class="row">
+      <div class="col-12 grid-margin">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Realizar Deposito</h4>
+         <form action="" method="post">
+{% csrf_token %}
+                <input style="font-size: large;" type="number" required name="valor" placeholder="ex.: 5 000 AOA" class="form-control" />
+                <br>
+                <button class=" btn btn-gradient-primary" type="submit">
+                    <i class="mdi mdi-save"> </i>
+                        Terminar
+    
+                  </button>
+
+         </form>
+         <a href="{% url 'pdfDownload' %}">Baixar Comprovativo</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock  %}

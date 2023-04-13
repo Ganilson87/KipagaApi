@@ -1,0 +1,174 @@
+{% extends 'index.html' %}
+
+{% block title %}| Criar empresas{% endblock  %}
+{% block content %}
+
+<div class="content-wrapper">
+    <div class="page-header">
+      <h3 class="page-title"> Cadastrar um nova empresa! </h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a class=" btn btn-gradient-warning" href="{% url 'empresa' %}">
+            <i class="mdi mdi-account-multiple-plus"></i>
+
+            Voltar</a></li>
+       
+        </ol>
+      </nav>
+    </div>
+    <div class="row">
+ 
+ 
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <form class="form-sample" method="post" id="form-sample" enctype="application/x-www-form-urlencoded">
+                {% csrf_token %}
+                <div class="d-flex align-items-center me-4 text-muted font-weight-light">
+                    <i class="mdi mdi-alert-circle-outline icon-sm text-primary me-2"></i>
+                    <span>Cadastre aqui as empresas, após isso o sistema enviará as credencias ao ao email!</span>
+                  </div>
+                  <br/>              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Nome da empresa</label>
+                    <div class="col-sm-9">
+                      <input type="text" name="nome" class="form-control" />
+                    </div>
+                  </div>
+                </div>
+                  
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Provincia</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="usuario">
+                        <option value="">Por favor selecione o usuario que deseja anexar</option>
+
+                        {% for user in users  %}
+                        <option value="{{user.id}}">{{user.first_name}} {{user.last_name}} </option>
+
+                        {% endfor %}
+                 
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                {% comment %} <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Usuario titular</label>
+                      <div class="col-sm-9">
+                        <input type="email" name="usuario" class="form-control" />
+                      </div>
+                    </div>
+                  </div> {% endcomment %}
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">NIF</label>
+                      <div class="col-sm-9">
+                        <input type="text" required name="nif" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                <div class="col-md-6">
+                    <div class="form-group row">
+                      <label class="col-sm-3 col-form-label">Tipo de Serviço</label>
+                      <div class="col-sm-9">
+                        <input type="text" required name="servico" class="form-control" />
+                      </div>
+                    </div>
+                  </div>
+                  
+              </div>
+     
+      
+                {% comment %} <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Membership</label>
+                    <div class="col-sm-4">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" required name="membershipRadios" id="membershipRadios1" value="" checked> Comercial </label>
+                      </div>
+                    </div>
+                    <div class="col-sm-5">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="radio" class="form-check-input" name="membershipRadios" id="membershipRadios2" value="option2"> Normal </label>
+                      </div>
+                    </div>
+                  </div>
+                </div> {% endcomment %}
+               <p class="card-description"> Localização </p>
+           
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Provincia</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" name="provincia">
+                        <option value="Huila">Huila</option>
+                 
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group row">
+<div class="ficheiro" style="
+">
+  <div class=”preview”>
+    <label for="file"  class=" btn btn-info" style="
+    margin-top: 20px; margin-left: 90px; display: inline-block;">             
+      <i class="mdi mdi-camera"></i>
+  
+  
+      Carregar foto</label>
+    <img id="file-ip-1-preview" style="
+      
+      margin-top: 0px;
+      width: 100%;
+      
+      " >
+  </div>
+
+  <input id="file" type="file" name="image" style="display: none;" accept="image/*" onchange="showPreview(event);">
+
+</div>               
+
+                  </div>
+                </div>
+              </div>
+               
+              <button class=" btn btn-gradient-primary" type="submit">
+                <i class="mdi mdi-save"> </i>
+                    Salvar
+
+              </button>
+            </form>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+  <script>
+    $('#form-sample').on('submit', function(event){
+      swal("Hello world!");
+
+      event.preventDefault();
+      console.log("form submitted!")  // sanity check
+  });
+     function showPreview(event){
+  if(event.target.files.length > 0){
+    var src = URL.createObjectURL(event.target.files[0]);
+    var preview = document.getElementById("file-ip-1-preview");
+    preview.src = src;
+    preview.style.display = "block";
+  }
+}
+  </script>
+
+{% endblock  %}
